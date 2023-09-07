@@ -9,6 +9,7 @@ import ReviewCard from './ReviewCard.jsx';
 import Loader from '../layout/Loader/Loader';
 import {useAlert} from 'react-alert';
 import MetaData from '../layout/metadata';
+import {addItemsToCart} from '../../actions/cartAction';
 
 const ProductDetails = () => {
 
@@ -17,14 +18,6 @@ const ProductDetails = () => {
     const {product,loading,error} = useSelector(state => state.productDetails);
     const alert = useAlert();
 
-    
-    useEffect(()=>{
-        if(error){
-            alert.error(error);
-            dispatch(clearErrors());
-        }
-        dispatch(getProductDetails(id));
-    },[dispatch,id,error,alert]);
 
     const options = {
         edit:false,
@@ -50,6 +43,19 @@ const ProductDetails = () => {
         const qty = quantity-1;
         setQuantity(qty);
     }
+
+    const addToCartHandler = ()=>{
+        dispatch(addItemsToCart(id,quantity));
+        alert.success("Item added to cart successfully.");
+    }
+
+    useEffect(()=>{
+        if(error){
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+        dispatch(getProductDetails(id));
+    },[dispatch,id,error,alert]);
 
   return (
     <Fragment>
@@ -82,7 +88,7 @@ const ProductDetails = () => {
                                 <input readOnly type="number" value ={quantity} />
                                 <button onClick = {increaseQuantity}>+</button>
                             </div>{" "}
-                            <button>Add to Cart.</button>
+                            <button onClick = {addToCartHandler}>Add to Cart.</button>
                         </div>
                         <p>
                             Status:{" "}

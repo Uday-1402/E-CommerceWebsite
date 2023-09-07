@@ -46,7 +46,7 @@ const Home = ()=>{
                 <div className="container" id = "container">
     
                     {products && products.map(product=>(
-                        <ProductCard product = {product} />
+                        <ProductCard product = {product}/>
                     ))}
                    
                 </div>
