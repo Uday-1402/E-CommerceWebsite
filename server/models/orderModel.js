@@ -95,7 +95,6 @@ const orderSchema = new Schema({
     orderStatus: {
         type: String,
         default: "Pending",
-        required: true
     },
     deliveredAt: Date,
     createdAt: {

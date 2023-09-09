@@ -69,7 +69,7 @@ const UserOptions = ({ user }) => {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
-        style={{ zIndex: "11" }}
+        style={{ zIndex: "13" }}
         icon={
           <img
             className="speedDialIcon"

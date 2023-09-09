@@ -88,7 +88,7 @@ const ProductDetails = () => {
                                 <input readOnly type="number" value ={quantity} />
                                 <button onClick = {increaseQuantity}>+</button>
                             </div>{" "}
-                            <button onClick = {addToCartHandler}>Add to Cart.</button>
+                            <button disabled = {product.stock<1?true:false} onClick = {addToCartHandler}>{product.stock<1?"Out of Stock":"Add to Cart."}</button>
                         </div>
                         <p>
                             Status:{" "}
@@ -109,7 +109,7 @@ const ProductDetails = () => {
             <h3 className = "ReviewsHeading">Reviews</h3>
             {(product.reviews && product.reviews[0]) ? (
                 <div className = "reviews">
-                    {product.reviews && product.reviews.map((review) => <ReviewCard review = {review}/>)}
+                    {product.reviews && product.reviews.map((review) => <ReviewCard key = {review._id} review = {review}/>)}
                 </div>
             ):(
                 <p className="noReviews">No Reviews Yet</p>

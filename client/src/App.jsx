@@ -2,7 +2,11 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Header from "./components/layout/Header/Header.jsx";
 import Footer from "./components/layout/Footer/Footer.jsx";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import axios from "axios";
 import webFont from "webfontloader";
 import Home from "./components/Home/Home.jsx";
@@ -26,6 +30,9 @@ import ConfirmOrder from "./components/Cart/ConfirmOrder.jsx";
 import Payment from "./components/Cart/Payment.jsx";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./components/Cart/OrderSuccess.jsx";
+import MyOrders from "./components/Order/MyOrders.jsx";
+import OrderDetails from "./components/Order/OrderDetails.jsx";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -98,15 +105,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        <Route
-          path="/order/confirm"
-          element={
-            <ProtectedRoute>
-              <ConfirmOrder />
-            </ProtectedRoute>
-          }
-        />
         <Route
           path="/process/payment"
           element={
@@ -119,6 +117,38 @@ function App() {
             )
           }
         />
+        <Route
+          path="/success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <MyOrders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+            path="/order/:id"
+            element={
+              <ProtectedRoute>
+                <OrderDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/order/confirm"
+            element={
+              <ProtectedRoute>
+                <ConfirmOrder />
+              </ProtectedRoute>
+            }
+          />
       </Routes>
 
       <Footer />
