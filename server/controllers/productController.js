@@ -98,7 +98,7 @@ exports.createProductReview = catchAsyncErrors(
             })
         } else {
             product.reviews.push(review);
-            product.numOfReviewes = product.reviews.length;
+            product.numOfReviews = product.reviews.length;
         }
 
         let avg = 0;
@@ -110,6 +110,7 @@ exports.createProductReview = catchAsyncErrors(
         await product.save({
             validateBeforeSave: false,
         });
+
 
         res.status(200).json({
             success: true,

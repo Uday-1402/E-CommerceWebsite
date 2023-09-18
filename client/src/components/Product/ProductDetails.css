@@ -20,6 +20,10 @@
     align-items: flex-start;
 }
 
+.MuiFabLabel:hover{
+    background-color: rgba(255,255,255);
+}
+
 .CarouselImage {
     width: 20vmax;
 }
@@ -44,7 +48,7 @@
     padding: 1vmax 0;
 }
 
-.detailsBlock-2>span {
+.detailsBlock-2-span {
     color: rgba(54, 54, 54, 0.585);
     font: 200 0.6vmax cursive;
 }
@@ -141,6 +145,19 @@
     transform: scale(1.1);
 }
 
+.submitDialog{
+    display:flex;
+    flex-direction: column;
+}
+
+.submitDialogTextArea{
+    border:1px solid rgba(0,0,0,0.082);
+    margin:1vmax 0;
+    outline:none;
+    padding:1rem;
+    font:300 1rem "Roboto";
+}
+
 .ReviewsHeading {
     color: #000000be;
     font: 500 1.4vmax "Roboto";
@@ -178,7 +195,7 @@
     font: 600 0.9vmax "Roboto";
 }
 
-.reviewCard>span {
+.reviewCardComment {
     color: rgba(0, 0, 0, 0.445);
     font: 300 0.8vmax cursive;
     width: 25vmax;
